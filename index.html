@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en-NZ">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>S.J. Pratt | The 716</title>
+<meta name="description" content="The 716 by S.J. Pratt: a YA sci-fi adventure in Meliora, where an Identifeye light decides your future.">
+<meta property="og:title" content="A homepage for S.J. Pratt, made by Sparsh Saini">
+<meta property="og:description" content="A homepage idea for S.J. Pratt and The 716, made by Sparsh Saini. Not the official site.">
+<meta property="og:image" content="https://sparshsainied-prog.github.io/sjpratt/img/og.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230b0a2a'/><path d='M8 9h9l-6 15 M19 9v15 M27 10c-3-2-6 0-6 6s2 8 4 8 3-2 3-4-1-4-3-4-3 1-4 2' fill='none' stroke='%23dfe4ea' stroke-width='2.2'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Michroma&family=Titillium+Web:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+/* Colours from The 716: deep space over Meliora, the city's electric blue and magenta,
+   the green beams of the tower, and the brushed chrome of the title. */
+:root {
+  --space: #0a0926;
+  --deep: #141142;
+  --blue: #4c84ff;
+  --magenta: #e2398f;
+  --beam: #2fe0a6;
+  --chrome: #e3e8ee;
+  --chrome-2: #a3abba;
+  --display: "Michroma", "Eurostile", "Arial Black", sans-serif;
+  --text: "Titillium Web", "Segoe UI", sans-serif;
+  --gutter: clamp(1rem, 5vw, 4rem);
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--space); color: var(--chrome); font-family: var(--text); font-size: 1.16rem; line-height: 1.6; overflow-x: hidden; }
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+.wrap { max-width: 70rem; margin: 0 auto; padding: 0 var(--gutter); }
+h1, h2, h3 { font-family: var(--display); font-weight: 400; margin: 0; line-height: 1.15; letter-spacing: .04em; text-transform: uppercase; }
+p { margin: 0 0 1rem; }
+:focus-visible { outline: 2px solid var(--beam); outline-offset: 3px; }
+/* Chrome lettering like the cover's: a cool brushed gradient, a dark edge, a sharp drop */
+.chrome { background: linear-gradient(#ffffff, #cfd5de 42%, #7d8696 50%, #dfe4ea 62%, #9aa3b2); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 .06em 0 rgba(5, 4, 20, .9)); }
+
+/* Buttons: chrome bars with a bevel, the way the title is cut */
+.btn { display: inline-block; padding: .72rem 1.3rem .62rem; font-family: var(--display); font-size: .82rem; letter-spacing: .12em; text-transform: uppercase; text-decoration: none; color: #0a0926; background: linear-gradient(#ffffff, #cfd5de 45%, #8f98a8 52%, #dfe4ea); border-radius: 3px; box-shadow: inset 0 1px 0 #fff, 0 .3rem .8rem rgba(0, 0, 0, .5); }
+.btn:hover, .btn:focus-visible { background: linear-gradient(#ffffff, #e9ecf1 45%, #b6bdc9 52%, #f2f4f7); }
+.btn.beam { background: none; color: var(--beam); border: 1px solid var(--beam); box-shadow: none; }
+.btn.beam:hover, .btn.beam:focus-visible { background: var(--beam); color: var(--space); }
+.quiet { text-underline-offset: .25em; text-decoration-thickness: 1px; }
+.quiet:hover, .quiet:focus-visible { color: var(--beam); }
+.buy { display: flex; flex-wrap: wrap; gap: .9rem 1.3rem; align-items: center; }
+
+.top { position: absolute; z-index: 30; top: 0; left: 0; right: 0; }
+.made { margin: 0; padding: .45rem var(--gutter); background: #05041a; color: var(--chrome-2); font-size: .98rem; line-height: 1.35; text-align: center; }
+
+/* A readout rail down the left edge on wide screens; on phones the same links sit in the hero */
+.rail { position: fixed; z-index: 40; left: 1.1rem; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: .2rem; padding-left: .8rem; border-left: 1px solid rgba(163, 171, 186, .45); }
+.rail { opacity: 0; visibility: hidden; transition: opacity .3s ease, visibility .3s; }
+.rail.on { opacity: 1; visibility: visible; }
+.rail a { font-family: var(--display); font-size: .66rem; letter-spacing: .14em; text-transform: uppercase; text-decoration: none; color: var(--chrome-2); padding: .3rem 0; }
+.rail a:hover, .rail a:focus-visible { color: var(--beam); }
+
+/* Hero: a crane shot up the cover. We start behind Andy and Olivia on the hill, rise over the city
+   to the tower, where the chrome title locks into place, then pull back to the whole book. */
+.hero { position: relative; height: 100svh; min-height: 38rem; }
+.js .hero { height: 360svh; }
+.stage { position: sticky; top: 0; height: 100svh; min-height: 38rem; overflow: hidden; background: radial-gradient(ellipse 70% 60% at 50% 45%, #1d1760, var(--space) 75%); }
+.inside { position: absolute; inset: 6rem var(--gutter) 2.5rem calc(var(--gutter) + 5rem); display: grid; grid-template-columns: auto minmax(0, 30rem); justify-content: center; align-items: center; gap: clamp(2rem, 5vw, 5rem); }
+.slot { height: min(70svh, 40rem); aspect-ratio: 1600 / 2560; }
+.cover { position: absolute; z-index: 2; left: 0; top: 0; transform-origin: 0 0; will-change: transform; overflow: hidden; box-shadow: 0 1.6rem 3.4rem rgba(3, 2, 15, .7); }
+.cover img { position: absolute; max-width: none; }
+.plate { left: 0; top: 0; width: 100%; height: 100%; }
+.figs { left: 49.875%; top: 56.875%; width: 48.062%; height: 33.086%; will-change: transform; }
+.ttl { left: 17.562%; top: 15.078%; width: 64.75%; height: 21.797%; transform-origin: 50% 60%; will-change: transform, opacity; }
+.js .ttl { opacity: 0; }
+.copy { position: relative; z-index: 3; will-change: transform, opacity; }
+.js .copy { opacity: 0; }
+.copy .series { font-family: var(--display); font-size: .78rem; letter-spacing: .2em; text-transform: uppercase; color: var(--chrome-2); margin-bottom: .8rem; }
+.copy h1 { font-size: clamp(3rem, 6vw, 5.2rem); line-height: 1; }
+.copy .tag { font-size: clamp(1.2rem, 1.8vw, 1.4rem); line-height: 1.45; margin: 1.1rem 0 1.5rem; }
+.copy .sjv { display: flex; align-items: center; gap: .8rem; margin-top: 1.6rem; color: var(--chrome-2); font-size: 1rem; }
+.copy .sjv img { width: 3.4rem; }
+.copy .inhero { display: none; }
+.open { position: absolute; z-index: 4; left: var(--gutter); right: var(--gutter); bottom: 9svh; max-width: 40rem; will-change: transform, opacity; }
+.open .line { margin: 0; font-family: var(--display); text-transform: uppercase; font-size: clamp(1.5rem, 3.4vw, 2.6rem); line-height: 1.25; letter-spacing: .02em; text-wrap: balance; text-shadow: 0 2px 20px rgba(5, 4, 20, .95); }
+.open .from { margin: .9rem 0 0; color: var(--chrome-2); text-shadow: 0 1px 10px rgba(5, 4, 20, .95); }
+.shade { position: absolute; z-index: 3; inset: 0; pointer-events: none; background: linear-gradient(transparent 40%, rgba(10, 9, 38, .85)); will-change: opacity; }
+html:not(.js) .cover, html:not(.js) .open, html:not(.js) .shade { display: none; }
+html:not(.js) .slot { background: url(img/the716.jpg) center / cover; }
+.still .hero { height: 100svh; }
+.still .open, .still .shade { display: none; }
+.still .copy, .still .ttl { opacity: 1; }
+
+/* Calm sections */
+.band { padding: clamp(4.5rem, 10vw, 8rem) 0; }
+h2 { font-size: clamp(1.7rem, 3.6vw, 2.8rem); margin-bottom: 1.3rem; text-wrap: balance; }
+.lead { font-size: clamp(1.3rem, 2.1vw, 1.55rem); line-height: 1.45; max-width: 42rem; }
+
+.lights { background: var(--deep); }
+.lights .grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 4rem); margin-top: 2.4rem; }
+.who { padding: 1.6rem 1.6rem 1.2rem; border-top: 3px solid; background: rgba(10, 9, 38, .6); }
+.who.o { border-color: var(--magenta); }
+.who.a { border-color: var(--blue); }
+.who .eye { display: inline-block; width: .8rem; height: .8rem; border-radius: 50%; margin-right: .6rem; vertical-align: .05rem; }
+.who.o .eye { background: var(--magenta); box-shadow: 0 0 .7rem var(--magenta); }
+.who.a .eye { background: var(--blue); box-shadow: 0 0 .7rem var(--blue); }
+.who h3 { font-size: 1.15rem; margin-bottom: .8rem; }
+.after { max-width: 44rem; margin-top: 2.6rem; }
+.after .ask { font-family: var(--display); text-transform: uppercase; font-size: clamp(1.1rem, 2vw, 1.4rem); line-height: 1.35; color: var(--beam); margin: 1.4rem 0 1.8rem; }
+
+.said { background: var(--space); }
+.quotes { list-style: none; padding: 0; margin: 2.2rem 0 0; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: 1.6rem 3rem; }
+.quotes li:first-child { grid-row: span 2; font-size: clamp(1.35rem, 2.3vw, 1.7rem); line-height: 1.4; }
+.quotes blockquote { margin: 0; }
+.quotes cite { display: block; margin-top: .6rem; font-style: normal; font-size: .95rem; color: var(--chrome-2); }
+
+.lab { background: linear-gradient(#0f2a2a, var(--space)); }
+.lab .grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: clamp(2.5rem, 6vw, 5rem); align-items: center; }
+.lab .bm { max-width: 13rem; margin: 0 auto; box-shadow: 0 1.2rem 2.4rem rgba(0, 0, 0, .55); transform: rotate(4deg); }
+.specs { list-style: none; padding: 0; margin: 1.6rem 0 2rem; border-top: 1px solid rgba(47, 224, 166, .4); }
+.specs li { display: grid; grid-template-columns: 9.5rem minmax(0, 1fr); gap: 1rem; padding: .6rem 0; border-bottom: 1px solid rgba(47, 224, 166, .25); }
+.specs b { font-family: var(--display); font-weight: 400; font-size: .74rem; letter-spacing: .14em; text-transform: uppercase; color: var(--beam); padding-top: .25rem; }
+
+.about { background: var(--deep); }
+.about .grid { display: grid; grid-template-columns: minmax(0, 15rem) minmax(0, 38rem); gap: clamp(2rem, 5vw, 4.5rem); align-items: start; }
+.about img { border-radius: 4px; box-shadow: 0 1rem 2rem rgba(0, 0, 0, .45); }
+.about .whale { font-family: var(--display); text-transform: uppercase; font-size: 1rem; letter-spacing: .06em; line-height: 1.5; color: var(--beam); margin-top: 1.4rem; }
+
+footer { padding: 2.2rem 0 2.6rem; background: #05041a; color: var(--chrome-2); font-size: 1rem; }
+footer .wrap { display: flex; flex-wrap: wrap; gap: .8rem 2rem; justify-content: space-between; }
+footer p { margin: 0; }
+
+@media (max-width: 900px) {
+  .rail { display: none; }
+  .inside { inset: 5.6rem 1.2rem 1.2rem; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto auto; justify-items: center; align-content: center; gap: 1rem; text-align: center; }
+  .slot { height: min(40svh, 21rem); }
+  .copy .series { font-size: .66rem; margin-bottom: .4rem; }
+  .copy h1 { font-size: 2.5rem; }
+  .copy .tag { font-size: 1.05rem; margin: .5rem 0 .9rem; }
+  .copy .buy { justify-content: center; }
+  .copy .sjv { display: none; }
+  .copy .inhero { display: flex; justify-content: center; gap: 1.1rem; margin-top: 1rem; padding-top: .7rem; border-top: 1px solid rgba(163, 171, 186, .35); font-family: var(--display); font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; }
+  .copy .inhero a { text-decoration: none; color: var(--chrome-2); }
+  .open { bottom: 7svh; }
+  .lights .grid, .lab .grid, .about .grid, .quotes { grid-template-columns: minmax(0, 1fr); }
+  .quotes li:first-child { grid-row: auto; }
+  .about img { max-width: 12rem; }
+  .specs li { grid-template-columns: 7.5rem minmax(0, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+<div class="top">
+  <p class="made">A homepage idea made by Sparsh Saini for S.J. Pratt. Not their official site.</p>
+</div>
+
+<nav class="rail" aria-label="Main">
+  <a href="#lights">The book</a>
+  <a href="#said">Readers</a>
+  <a href="#lab">Engineered</a>
+  <a href="#sj">S.J.</a>
+</nav>
+
+<main>
+<section class="hero" aria-label="The 716">
+  <div class="stage">
+    <div class="inside">
+      <div class="slot" aria-hidden="true"></div>
+      <div class="copy">
+        <p class="series">The Meliora Chronicles · Book 1</p>
+        <h1 class="chrome">The 716</h1>
+        <p class="tag">Humour, engineering, a touch of romance, an adorable robot bestie and the courage of everyday heroes.</p>
+        <div class="buy">
+          <a class="btn" href="https://www.sjpratt.com/shop">Signed copy (NZ)</a>
+          <a class="quiet" href="https://mybook.to/The716">Amazon and Kindle Unlimited</a>
+        </div>
+        <p class="sjv"><img src="img/sjv.webp" alt="" width="240" height="240">Sir Julius Vogel Award finalist</p>
+        <nav class="inhero" aria-label="Sections">
+          <a href="#lights">The book</a><a href="#lab">Engineered</a><a href="#sj">S.J.</a>
+        </nav>
+      </div>
+    </div>
+    <div class="cover" role="img" aria-label="The 716 cover: two teenagers on a dark hill look out over the neon city of Meliora and its tower of green light, under a starry sky">
+      <img class="plate" src="img/s-plate.jpg" alt="" width="1600" height="2560" fetchpriority="high">
+      <img class="figs" src="img/s-figures.webp" alt="" width="769" height="847">
+      <img class="ttl" src="img/s-title.webp" alt="" width="1036" height="558">
+    </div>
+    <div class="shade"></div>
+    <div class="open">
+      <p class="line">Will they do what is expected, or what is right?</p>
+      <p class="from">The 716, book one of the Meliora Chronicles</p>
+    </div>
+  </div>
+</section>
+
+<section class="band lights" id="lights">
+  <div class="wrap">
+    <h2>In Meliora, your light decides your life</h2>
+    <p class="lead">In a futuristic society where men are second-class citizens and only binary gender norms are acceptable, two people have to decide what kind of world they want to live in.</p>
+    <div class="grid">
+      <div class="who o"><h3><span class="eye"></span>Olivia</h3><p>Destined to be the future leader of Meliora. She’s smart, rich, and innovative, and she has a pink Identifeye light.</p></div>
+      <div class="who a"><h3><span class="eye"></span>Andy</h3><p>Destined to be a waiter and househusband. His blue Identifeye light prevents him from pursuing his dream of becoming an engineer. After all, who ever heard of a male engineer?</p></div>
+    </div>
+    <div class="after">
+      <p>But when Andy’s life becomes entangled with Olivia’s and he gets the chance to prove himself on the female stage, everything starts to change.</p>
+      <p class="ask">Will they do what is expected or what is right? And will the wrong choice spell disaster?</p>
+      <div class="buy">
+        <a class="btn" href="https://www.sjpratt.com/shop">Signed paperback · NZ$24.99</a>
+        <a class="btn beam" href="https://mybook.to/The716">Kindle Unlimited</a>
+        <a class="quiet" href="https://dashboard.mailerlite.com/forms/1414900/150061575181436717/share">First three chapters free</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band said" id="said">
+  <div class="wrap">
+    <h2>For fans of Divergent, Legend and The Lunar Chronicles</h2>
+    <ul class="quotes">
+      <li><blockquote>“The 716 is the kind of story I want my future children to read. To give them the courage to challenge standards, stand up for one another, and be strong enough to not only embrace change, but create it.”<cite>Sarah Newland, award-winning author of Extant</cite></blockquote></li>
+      <li><blockquote>“If I could give this book 6 stars, I would.”<cite>Goodreads review</cite></blockquote></li>
+      <li><blockquote>“I think The 716 might just be the book that persuades me to try more SciFi.”<cite>Goodreads review</cite></blockquote></li>
+    </ul>
+  </div>
+</section>
+
+<section class="band lab" id="lab">
+  <div class="wrap grid">
+    <div>
+      <h2>Engineered, for real</h2>
+      <p class="lead">I co-founded an aerospace engineering company in 2017, around the same time I started my first novel. So the engineering problems in my books are real ones, made fun.</p>
+      <ul class="specs">
+        <li><b>Day job</b><span>Self-heating batteries for space, magnetic propulsion, small satellites that house science experiments</span></li>
+        <li><b>Bookmark</b><span>Collector’s edition, made of legit circuit board material, designed by an electrical engineer. NZ$2.99</span></li>
+        <li><b>Tote</b><span>#twerdandproud, only a handful left. NZ$11.99</span></li>
+      </ul>
+      <a class="btn" href="https://www.sjpratt.com/shop">Order from me</a>
+    </div>
+    <img class="bm" src="img/bookmark.jpg" alt="The 716 collector's edition bookmark, a green circuit board with S.J. Pratt and The 716 printed on it" width="420" height="945" loading="lazy">
+  </div>
+</section>
+
+<section class="band about" id="sj">
+  <div class="wrap grid">
+    <img src="img/sj.jpg" alt="S.J. Pratt smiling, in glasses" width="460" height="613" loading="lazy">
+    <div>
+      <h2>S.J. Pratt</h2>
+      <p class="lead">Writing with coffee, joy and unfortunate amounts of cat fur.</p>
+      <p>I write young adult sci-fi and fantasy from Christchurch, where I live with my incredible husband and incredibly needy cats. My stories have appeared in Sponge, The Quick Brown Dog, The Commuting Book and Antipodean SF, and I narrate for the Antipodean SF Radio Show.</p>
+      <p>I’m also a rock climber and a budding ballerina, and I’m working on book two.</p>
+      <p class="whale">As a sci-fi nerd, I look forward to culminating my existence as an omnipotent space whale.</p>
+      <div class="buy" style="margin-top:1.6rem">
+        <a class="btn beam" href="https://dashboard.mailerlite.com/forms/1414900/150061575181436717/share">Newsletter</a>
+        <a class="quiet" href="https://www.instagram.com/sjpratt_author/">Instagram</a>
+        <a class="quiet" href="https://www.goodreads.com/user/show/118736972-sarah-pratt">Goodreads</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>A mockup made by Sparsh Saini for S.J. Pratt. Not affiliated, not live. The cover and words are the author’s.</p>
+    <p><a class="quiet" href="#">Back to top</a></p>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const hero = document.querySelector('.hero'), stage = hero.querySelector('.stage');
+  const cover = hero.querySelector('.cover'), slot = hero.querySelector('.slot');
+  const figs = cover.querySelector('.figs'), ttl = cover.querySelector('.ttl');
+  const open = hero.querySelector('.open'), shade = hero.querySelector('.shade'), copy = hero.querySelector('.copy');
+  const A = { x: .66, y: .74 }, B = { x: .5, y: .27 };   // the hill, then the title over the tower
+  const clamp = v => Math.min(1, Math.max(0, v));
+  const ease = t => t * t * (3 - 2 * t);
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let L = null;
+  const measure = () => {
+    cover.style.transform = 'none';
+    const s = stage.getBoundingClientRect(), r = slot.getBoundingClientRect();
+    const W = s.width, H = s.height, w = r.width, h = r.height;
+    cover.style.width = w + 'px'; cover.style.height = h + 'px';
+    const k0 = Math.max(H / (h * (W <= 900 ? .4 : .5)), W / w * 1.04);
+    L = { top: hero.getBoundingClientRect().top + scrollY, run: hero.offsetHeight - innerHeight, W, H, w, h, k0,
+          end: [r.left - s.left + B.x * w, r.top - s.top + B.y * h] };
+  };
+  // Keep the zoomed cover covering the screen: clamp a screen anchor for a cover point at a zoom.
+  const place = (fx, fy, k, sx, sy) => {
+    let x = sx - fx * L.w * k, y = sy - fy * L.h * k;
+    x = Math.min(0, Math.max(L.W - L.w * k, x)); y = Math.min(0, Math.max(L.H - L.h * k, y));
+    return [x, y];
+  };
+  const render = p => {
+    // Crane up: from the hill to the tower at the same zoom...
+    const c = ease(clamp((p - .05) / .42));
+    const fx = A.x + (B.x - A.x) * c, fy = A.y + (B.y - A.y) * c;
+    let [x, y] = place(fx, fy, L.k0, L.W / 2, L.H * .5);
+    let k = L.k0;
+    // ...then pull back to the whole book in its place.
+    const z = ease(clamp((p - .5) / .26));
+    if (z > 0) {
+      k = Math.exp(Math.log(L.k0) * (1 - z));
+      const [x0, y0] = place(B.x, B.y, L.k0, L.W / 2, L.H * .5);
+      const ax = x0 + B.x * L.w * L.k0, ay = y0 + B.y * L.h * L.k0;
+      const ex = ax + (L.end[0] - ax) * z, ey = ay + (L.end[1] - ay) * z;
+      x = ex - B.x * L.w * k; y = ey - B.y * L.h * k;
+    }
+    cover.style.transform = `translate(${x.toFixed(1)}px,${y.toFixed(1)}px) scale(${k.toFixed(4)})`;
+    // Andy and Olivia are nearest, so they drop away faster as the camera rises.
+    figs.style.transform = `translateY(${(14 * Math.sin(Math.PI * c) * (1 - z)).toFixed(2)}%)`;
+    // The chrome title locks in as we reach the tower: it settles from slightly large, with a small overshoot.
+    const t = clamp((p - .36) / .14), s = t === 0 ? 0 : 1 + 2.2 * Math.pow(t - 1, 3) + 1.2 * Math.pow(t - 1, 2);
+    ttl.style.opacity = clamp(t * 2).toFixed(3);
+    ttl.style.transform = `translateY(${(8 * (1 - s)).toFixed(2)}%) scale(${(1.35 - .35 * s).toFixed(4)})`;
+    const o = ease(clamp((p - .03) / .15));
+    open.style.opacity = (1 - o).toFixed(3); open.style.transform = `translateY(${(-o * 2.5).toFixed(2)}rem)`;
+    shade.style.opacity = (1 - ease(clamp((p - .08) / .3))).toFixed(3);
+    const cp = ease(clamp((p - .74) / .18));
+    copy.style.opacity = cp.toFixed(3); copy.style.transform = `translateY(${((1 - cp) * 1.4).toFixed(2)}rem)`;
+  };
+  let ticking = false;
+  const rail = document.querySelector('.rail');
+  const update = () => { ticking = false; render(reduced ? 1 : (L.run > 0 ? clamp((scrollY - L.top) / L.run) : 1)); rail.classList.toggle('on', scrollY > L.top + L.run + innerHeight * .4); };
+  const relayout = () => { measure(); update(); };
+  if (reduced) document.documentElement.classList.add('still');
+  addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+  addEventListener('resize', relayout);
+  document.fonts && document.fonts.ready.then(relayout);
+  relayout();
+})();
+</script>
+</body>
+</html>
